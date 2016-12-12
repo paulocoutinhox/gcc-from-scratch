@@ -1,4 +1,4 @@
-# Docker image to compile GCC from scratch
+# Compile GCC from scratch
 
 It compile the GCC and G++ from scratch.  
 It is nice to test different compilation modes for tests purposes.  
