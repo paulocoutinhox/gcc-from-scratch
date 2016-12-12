@@ -5,7 +5,7 @@ It is nice to test different compilation modes for tests purposes.
 
 ## Instructions
 
-> git clone git@github.com:prsolucoes/gcc-from-scratch.git    
+> git clone https://github.com/prsolucoes/gcc-from-scratch.git    
 > cd gcc-from-scratch  
 > ./build.sh  
 
