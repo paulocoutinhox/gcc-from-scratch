@@ -37,9 +37,6 @@ RUN wget "ftp://gcc.gnu.org/pub/gcc/infrastructure/${ISL_VERSION}.tar.bz2" -O ${
 RUN wget "ftp://gcc.gnu.org/pub/gcc/infrastructure/${CLOOG_VERSION}.tar.gz" -O ${BASE_DIR}/${CLOOG_VERSION}.tar.gz
 RUN wget "ftp://ftp.uvsq.fr/pub/gcc/releases/${GCC_VERSION}/${GCC_VERSION}.tar.bz2" -O ${BASE_DIR}/${GCC_VERSION}.tar.bz2
 
-# [TODO] send it to top
-RUN apt-get install -y m4
-
 # build GMP
 WORKDIR ${BASE_DIR}
 RUN tar xfjv "${GMP_VERSION}.tar.bz2"
