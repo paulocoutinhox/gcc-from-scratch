@@ -25,7 +25,7 @@ ENV GCC_VERSION=gcc-6.2.0
 
 # base paths
 ENV BASE_DIR=/gcc-from-scratch
-ENV GCC_PREFIX=/gcc-from-scratch/gcc
+ENV GCC_PREFIX=/gcc-from-scratch/gcc-build
 RUN mkdir -p ${BASE_DIR}
 RUN mkdir -p ${GCC_PREFIX}
 
