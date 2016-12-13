@@ -19,7 +19,7 @@ After build with success, you can execute:
 
 And inside the container, you can run:
 
-> /gcc-from-scratch/gcc/gcc/bin/gcc -v
+> /gcc-from-scratch/gcc-build/gcc/bin/gcc -v
 
  *Obs: You need docker to use it*
 
