@@ -45,7 +45,7 @@ WORKDIR ${BASE_DIR}
 RUN tar xfjv "${GMP_VERSION}.tar.bz2"
 RUN mkdir "${GMP_VERSION}/build"
 WORKDIR "${GMP_VERSION}/build"
-RUN ../configure --prefix="${GCC_PREFIX}/gmp" --disable-shared --enable-static
+RUN ../configure --prefix="${GCC_PREFIX}/gmp"
 RUN make -j"$(nproc)"
 RUN make install
 
@@ -54,7 +54,7 @@ WORKDIR ${BASE_DIR}
 RUN tar xfvz "${MPFR_VERSION}.tar.gz"
 RUN mkdir "${MPFR_VERSION}/build"
 WORKDIR "${MPFR_VERSION}/build"
-RUN ../configure --prefix="${GCC_PREFIX}/mpfr" --with-gmp="${GCC_PREFIX}/gmp" --disable-shared --enable-static
+RUN ../configure --prefix="${GCC_PREFIX}/mpfr" --with-gmp="${GCC_PREFIX}/gmp"
 RUN make -j"$(nproc)"
 RUN make install
 
@@ -63,7 +63,7 @@ WORKDIR ${BASE_DIR}
 RUN tar xfvz "${MPC_VERSION}.tar.gz"
 RUN mkdir "${MPC_VERSION}/build"
 WORKDIR "${MPC_VERSION}/build"
-RUN ../configure --prefix="${GCC_PREFIX}/mpc" --with-gmp="${GCC_PREFIX}/gmp" --with-mpfr="${GCC_PREFIX}/mpfr" --disable-shared --enable-static
+RUN ../configure --prefix="${GCC_PREFIX}/mpc" --with-gmp="${GCC_PREFIX}/gmp" --with-mpfr="${GCC_PREFIX}/mpfr"
 RUN make -j"$(nproc)"
 RUN make install
 
@@ -72,7 +72,7 @@ WORKDIR ${BASE_DIR}
 RUN tar xfvj "${ISL_VERSION}.tar.bz2"
 RUN mkdir "${ISL_VERSION}/build"
 WORKDIR "${ISL_VERSION}/build"
-RUN ../configure --prefix="${GCC_PREFIX}/isl" --with-gmp-prefix="${GCC_PREFIX}/gmp" --disable-shared --enable-static
+RUN ../configure --prefix="${GCC_PREFIX}/isl" --with-gmp-prefix="${GCC_PREFIX}/gmp"
 RUN make -j"$(nproc)"
 RUN make install
 
@@ -81,7 +81,7 @@ WORKDIR ${BASE_DIR}
 RUN tar xfvz "${CLOOG_VERSION}.tar.gz"
 RUN mkdir "${CLOOG_VERSION}/build"
 WORKDIR "${CLOOG_VERSION}/build"
-RUN ../configure --prefix="${GCC_PREFIX}/cloog" --with-gmp-prefix="${GCC_PREFIX}/gmp" --with-isl="${GCC_PREFIX}/isl" --disable-shared --enable-static
+RUN ../configure --prefix="${GCC_PREFIX}/cloog" --with-gmp-prefix="${GCC_PREFIX}/gmp" --with-isl="${GCC_PREFIX}/isl"
 RUN make -j"$(nproc)"
 RUN make install
 
@@ -103,10 +103,7 @@ RUN ../configure \
 	--with-isl="${GCC_PREFIX}/isl" \
 	--with-cloog="${GCC_PREFIX}/cloog" \
 	--enable-languages=c,c++ \
-	--disable-shared \
-	--enable-static \
-	--disable-multilib \
-	--with-pic
+	--disable-multilib
 
 RUN make -j"$(nproc)"
 RUN make install
