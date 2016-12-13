@@ -95,15 +95,18 @@ WORKDIR ${BASE_DIR}
 RUN tar xfvj "${GCC_VERSION}.tar.bz2"
 RUN mkdir "${GCC_VERSION}/build"
 WORKDIR "${GCC_VERSION}/build"
-RUN ../configure
-	--prefix="${GCC_PREFIX}"
-	--with-gmp="${GCC_PREFIX}"
-	--with-mpfr="${GCC_PREFIX}"
-	--with-mpc="${GCC_PREFIX}"
-	--with-isl="${GCC_PREFIX}"
-	--with-cloog="${GCC_PREFIX}"
-	--enable-checking=release
-	--enable-languages=c,c++
+RUN ../configure \
+	--prefix="${GCC_PREFIX}/gcc" \
+	--with-gmp="${GCC_PREFIX}/gmp" \
+	--with-mpfr="${GCC_PREFIX}/mpfr" \
+	--with-mpc="${GCC_PREFIX}/mpc" \
+	--with-isl="${GCC_PREFIX}/isl" \
+	--with-cloog="${GCC_PREFIX}/cloog" \
+	--enable-languages=c,c++ \
+	--disable-shared \
+	--enable-static \
+	--disable-multilib \
+	--with-pic
 
 RUN make -j"$(nproc)"
 RUN make install
